@@ -3,6 +3,7 @@ defmodule TerraformerWeb.UserSocket do
 
   ## Channels
   channel "sandbox:*", TerraformerWeb.SandboxChannel
+  channel "control:*", TerraformerWeb.ControlChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

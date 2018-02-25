@@ -6,4 +6,9 @@ defmodule TerraformerWeb.SandboxChannel do
     # {:error, %{reason: "unauthorized"}}
   end
 
+  def handle_in(message, body, socket) do
+    TerraformerWeb.Endpoint.broadcast_from! self(), "control:orange-apple-123", message, body
+    {:noreply, socket}
+  end
+
 end
