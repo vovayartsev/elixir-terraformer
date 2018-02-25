@@ -15,8 +15,17 @@ use Mix.Config
 # which you typically run after static files are built.
 config :terraformer, TerraformerWeb.Endpoint,
   load_from_system_env: true,
+  server: true, # Without this line, your app will not start the web server!
+  secret_key_base: "${SECRET_KEY_BASE}",
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
+
+config :terraformer, Terraformer.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "",
+  ssl: true,
+  pool_size: 1 # Free tier db only allows 1 connection
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -58,7 +67,3 @@ config :logger, level: :info
 #
 #     config :terraformer, TerraformerWeb.Endpoint, server: true
 #
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
