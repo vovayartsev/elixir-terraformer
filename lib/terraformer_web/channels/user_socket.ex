@@ -2,7 +2,7 @@ defmodule TerraformerWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", TerraformerWeb.RoomChannel
+  channel "sandbox:*", TerraformerWeb.SandboxChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
