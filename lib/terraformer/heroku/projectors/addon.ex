@@ -7,9 +7,8 @@ defmodule Terraformer.Heroku.Projectors.Addon do
   alias Terraformer.Heroku.Events.{AddonProvisioned}
 
   project %AddonProvisioned{} = provisioned do
-    IO.puts "PROJECTING: #{inspect(provisioned)}"
-    Ecto.Multi.insert(multi, :addon, %Addon{
-      uuid: provisioned.uuid,
-    })
+    # IO.puts "PROJECTING: #{inspect(provisioned)}"
+    Terraformer.Repo.insert!(%Addon{uuid: provisioned.uuid})
+    Ecto.Multi.insert(multi, :addon, %Addon{uuid: provisioned.uuid})
   end
 end

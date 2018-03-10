@@ -14,11 +14,12 @@ defmodule Terraformer.Storage do
   end
 
   defp reset_eventstore do
-    # {:ok, _event_store} = Commanded.EventStore.Adapters.InMemory.start_link()
+    {:ok, _event_store} = Commanded.EventStore.Adapters.InMemory.start_link()
   end
 
   def reset_readstore do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Terraformer.Repo)
+
     Ecto.Adapters.SQL.Sandbox.mode(Terraformer.Repo, {:shared, self()})
   end
 end

@@ -14,11 +14,15 @@ config :terraformer, Terraformer.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "terraformer_read_test",
   hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 1
+
+config :ex_unit,
+  capture_log: true
 
 config :commanded,
   event_store_adapter: Commanded.EventStore.Adapters.InMemory
-  # event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
 
 # config :eventstore, EventStore.Storage,
 #   serializer: Commanded.Serialization.JsonSerializer,
