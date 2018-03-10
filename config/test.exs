@@ -12,8 +12,16 @@ config :logger, level: :warn
 # Configure your database
 config :terraformer, Terraformer.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "terraformer_test",
+  database: "terraformer_read_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.InMemory
+  # event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+# config :eventstore, EventStore.Storage,
+#   serializer: Commanded.Serialization.JsonSerializer,
+#   database: "terraformer_events_test",
+#   hostname: "localhost",
+#   pool: Ecto.Adapters.SQL.Sandbox

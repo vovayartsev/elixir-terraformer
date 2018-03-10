@@ -12,8 +12,12 @@ defmodule Terraformer.Application do
       supervisor(Terraformer.Repo, []),
       # Start the endpoint when the application starts
       supervisor(TerraformerWeb.Endpoint, []),
+
       # Start your own worker by calling: Terraformer.Worker.start_link(arg1, arg2, arg3)
       # worker(Terraformer.Worker, [arg1, arg2, arg3]),
+
+      # Heroku domain (projections and handlers)
+      supervisor(Terraformer.Heroku.Supervisor, []),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

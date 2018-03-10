@@ -26,11 +26,13 @@ defmodule Terraformer.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Terraformer.Repo)
+    # :ok = Ecto.Adapters.SQL.Sandbox.checkout(Terraformer.Repo)
 
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Terraformer.Repo, {:shared, self()})
-    end
+    Terraformer.Storage.reset!()
+
+    # unless tags[:async] do
+    #   Ecto.Adapters.SQL.Sandbox.mode(Terraformer.Repo, {:shared, self()})
+    # end
 
     :ok
   end

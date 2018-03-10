@@ -20,9 +20,16 @@ defmodule Terraformer.Mixfile do
   def application do
     [
       mod: {Terraformer.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: extra_applications(Mix.env)
     ]
   end
+
+  defp extra_applications(:test), do: [:logger]
+  defp extra_applications(_), do: [
+    :logger,
+    :runtime_tools,
+    :eventstore,
+  ]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
@@ -41,7 +48,14 @@ defmodule Terraformer.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:commanded_eventstore_adapter, "~> 0.3", runtime: Mix.env != :test},
+      {:commanded_ecto_projections, "~> 0.6"},
+      {:commanded, "~> 0.15"},
+      {:uuid, "~> 1.1"},
+      {:vex, "~> 0.6"},
+      {:exconstructor, "~> 1.1"},
+      {:ex_machina, "~> 2.1", only: :test}
     ]
   end
 
@@ -55,7 +69,8 @@ defmodule Terraformer.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      # "test": ["ecto.create --quiet", "ecto.migrate", "test"]
+      "test": ["ecto.create --quiet", "ecto.migrate", "test --no-start"],
     ]
   end
 end

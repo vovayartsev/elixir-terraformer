@@ -51,6 +51,15 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :terraformer, Terraformer.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "terraformer_dev",
+  database: "terraformer_read_dev",
+  hostname: "localhost",
+  pool_size: 10
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :eventstore, EventStore.Storage,
+  serializer: Commanded.Serialization.JsonSerializer,
+  database: "terraformer_events_dev",
   hostname: "localhost",
   pool_size: 10
