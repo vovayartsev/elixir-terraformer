@@ -22,10 +22,3 @@ config :ex_unit,
 
 config :commanded,
   event_store_adapter: Commanded.EventStore.Adapters.InMemory
-
-
-# config :eventstore, EventStore.Storage,
-#   serializer: Commanded.Serialization.JsonSerializer,
-#   database: "terraformer_events_test",
-#   hostname: "localhost",
-#   pool: Ecto.Adapters.SQL.Sandbox

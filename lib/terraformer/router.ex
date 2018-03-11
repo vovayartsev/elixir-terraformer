@@ -5,8 +5,8 @@ defmodule Terraformer.Router do
   alias Terraformer.Heroku.Commands.{
     ProvisionAddon,
   }
-  alias Terraformer.Support.Middleware.{Uniqueness,Validate}
 
+  # alias Terraformer.Support.Middleware.{Uniqueness,Validate}
   # middleware Validate
   # middleware Uniqueness
 
