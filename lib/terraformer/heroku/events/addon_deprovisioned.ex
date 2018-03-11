@@ -1,4 +1,4 @@
-defmodule Terraformer.Heroku.Events.AddonProvisioned do
+defmodule Terraformer.Heroku.Events.AddonDeprovisioned do
   @derive [Poison.Encoder]
   defstruct [
     :uuid,

@@ -1,4 +1,4 @@
-defmodule Terraformer.Heroku.Commands.ProvisionAddon do
+defmodule Terraformer.Heroku.Commands.DeprovisionAddon do
   defstruct [
     uuid: "",
   ]

@@ -5,7 +5,7 @@ defmodule Terraformer.Heroku.Projections.Addon do
 
   schema "heroku_addons" do
     field :name, :string
-
+    field :vault_id, :string
     timestamps()
   end
 end

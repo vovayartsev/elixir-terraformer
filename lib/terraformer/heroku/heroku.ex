@@ -1,5 +1,5 @@
 defmodule Terraformer.Heroku do
-  alias Terraformer.Heroku.Commands.{ProvisionAddon}
+  alias Terraformer.Heroku.Commands.{ProvisionAddon, DeprovisionAddon}
   alias Terraformer.Heroku.Projections.{Addon}
   alias Terraformer.{Repo,Router}
 
@@ -12,5 +12,10 @@ defmodule Terraformer.Heroku do
     else
       reply -> reply
     end
+  end
+
+  def deprovision_addon(%{uuid: uuid} = attrs) do
+    deprovision_addon = DeprovisionAddon.new(attrs)
+    Router.dispatch(deprovision_addon, consistency: :strong)
   end
 end
