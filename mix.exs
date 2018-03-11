@@ -55,7 +55,8 @@ defmodule Terraformer.Mixfile do
       {:uuid, "~> 1.1"},
       {:vex, "~> 0.6"},
       {:exconstructor, "~> 1.1"},
-      {:ex_machina, "~> 2.1", only: :test}
+      {:ex_machina, "~> 2.1", only: :test},
+      {:joken, "~> 1.5"}
     ]
   end
 
