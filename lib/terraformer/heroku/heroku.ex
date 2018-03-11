@@ -1,5 +1,5 @@
 defmodule Terraformer.Heroku do
-  alias Terraformer.Heroku.Commands.{ProvisionAddon, DeprovisionAddon}
+  alias Terraformer.Heroku.Commands.{ProvisionAddon, DeprovisionAddon, AttachVault}
   alias Terraformer.Heroku.Projections.{Addon}
   alias Terraformer.{Repo,Router}
 
@@ -12,6 +12,11 @@ defmodule Terraformer.Heroku do
     else
       reply -> reply
     end
+  end
+
+  def attach_vault(%{uuid: uuid, vault_id: vault_id} = attrs) do
+    attach_vault = AttachVault.new(attrs)
+    Router.dispatch(attach_vault, consistency: :strong)
   end
 
   def deprovision_addon(%{uuid: uuid} = attrs) do

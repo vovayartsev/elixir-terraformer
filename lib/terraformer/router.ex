@@ -3,7 +3,7 @@ defmodule Terraformer.Router do
 
   alias Terraformer.Heroku
   alias Terraformer.Heroku.Commands.{
-    ProvisionAddon, DeprovisionAddon
+    ProvisionAddon, DeprovisionAddon, AttachVault
   }
 
   # alias Terraformer.Support.Middleware.{Uniqueness,Validate}
@@ -12,6 +12,6 @@ defmodule Terraformer.Router do
 
   identify Heroku.Aggregates.Addon, by: :uuid, prefix: "heroku-addon-"
 
-  dispatch [ ProvisionAddon, DeprovisionAddon ], to: Heroku.Aggregates.Addon
+  dispatch [ ProvisionAddon, DeprovisionAddon, AttachVault ], to: Heroku.Aggregates.Addon
 
 end
