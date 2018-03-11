@@ -11,7 +11,7 @@ defmodule Terraformer.Heroku.Supervisor do
   def init(_arg) do
     Supervisor.init([
       Projectors.Addon,
-      Workflows.NotifyHerokuAboutProvisionings
+      Workflows.NotifyHerokuAboutProvisioning
     ], strategy: :one_for_one)
   end
 end
