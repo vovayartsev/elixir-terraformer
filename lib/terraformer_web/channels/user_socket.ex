@@ -2,7 +2,7 @@ defmodule TerraformerWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "sandbox:*", TerraformerWeb.SandboxChannel
+  channel "vault:*", TerraformerWeb.VaultChannel
   channel "control:*", TerraformerWeb.ControlChannel
 
   ## Transports

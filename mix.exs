@@ -56,7 +56,8 @@ defmodule Terraformer.Mixfile do
       {:vex, "~> 0.6"},
       {:exconstructor, "~> 1.1"},
       {:ex_machina, "~> 2.1", only: :test},
-      {:joken, "~> 1.5"}
+      {:joken, "~> 1.5"},
+      {:secure_random, "~> 0.5"}
     ]
   end
 
